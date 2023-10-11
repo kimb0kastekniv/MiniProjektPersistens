@@ -11,7 +11,7 @@ public class SaleOrder {
 
 	// Getters and Setters
 	public int getSaleOrder() {
-		return saleOrder;
+		return saleOrderId;
 	}
 
 	public void setSaleOrderId(int saleOrderId) {
