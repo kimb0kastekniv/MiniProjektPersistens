@@ -4,8 +4,8 @@ public abstract class Customer {
 	private int customerId;
 	private String streetName;
 	private int streetNo;
-	private int zipcode;
-	private int countryId;
+	private ZipCodeCity zipcode;
+	private Country countryId;
 	private int phone;
 	private String email;
 	private int customerType;
