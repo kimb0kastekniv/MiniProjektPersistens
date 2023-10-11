@@ -1,25 +1,25 @@
 package model;
 
 public class SaleOrderLine {
-	private int saleOrderId; // Composite primary key with product_id
-	private int productId; // Composite primary key with saleOrderId
+	private SaleOrder saleOrderId; // Composite primary key with product_id
+	private Product productId; // Composite primary key with saleOrderId
 	private int quantity;
 	private double salePrice;
 
 	// Getters and Setters
-	public int getSaleOrderId() {
+	public SaleOrder getSaleOrderId() {
 		return saleOrderId;
 	}
 
-	public void setSaleOrderId(int saleOrderId) {
+	public void setSaleOrderId(SaleOrder saleOrderId) {
 		this.saleOrderId = saleOrderId;
 	}
 
-	public int getProductId() {
+	public Product getProductId() {
 		return productId;
 	}
 
-	public void setProductId(int productId) {
+	public void setProductId(Product productId) {
 		this.productId = productId;
 	}
 
