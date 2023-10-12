@@ -1,14 +1,12 @@
 package model;
 
-public class BusinessCustomer extends Customer {
+public class BusinessCustomer {
 	private String businessName;
 	private int bcId;
 	private int cvr;
 	private int discount;
 
-	public BusinessCustomer(int customerId, String streetName, int streetNo, int zipcode, int countryId, int phone,
-			String email, int customerType, String businessName, int bcId, int cvr, int discount) {
-		super(customerId, streetName, streetNo, zipcode, countryId, phone, email, customerType);
+	public BusinessCustomer(String businessName, int bcid, int discount) {
 		this.businessName = businessName;
 		this.bcId = bcId;
 		this.cvr = cvr;
