@@ -1,16 +1,16 @@
 package model;
 
-public class Equipment extends Product {
+public class Equipment {
 
 	private int eqId;
 	private int type;
 	private String description;
 
-	public Equipment(int productId, String name, double purchasePrice, double salesPrice, int minStock,
-			Supplier supplierId, Country countryId, int type) {
-		super(productId, name, purchasePrice, salesPrice, minStock, supplierId, countryId, type);
-		}
-	
+	public Equipment(int eqId, int type, String description) {
+		this.eqId = eqId; 
+	    this.type = type; 
+	    this.description = description; 
+	}
 
 	// Getters and Setters
 	public int getEqId() {
