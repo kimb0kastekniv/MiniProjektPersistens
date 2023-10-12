@@ -10,11 +10,12 @@ import model.Clothing;
 import model.Equipment;
 import model.GunReplica;
 import model.Product;
+import dblayer.*;
 
 public class DBProduct implements DBProductIF {
 
 	private static final String selectAllQ = "SELECT * FROM Product";
-	private static final String findByProductIdQ = selectAllQ + "WHERE product_Id = ?";
+	private static final String findByProductIdQ = selectAllQ + " WHERE product_Id = ?";
 	private PreparedStatement selectAll;
 	private PreparedStatement findByProductId;
 
