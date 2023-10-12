@@ -10,7 +10,7 @@ public abstract class Customer {
 	private String email;
 	private int customerType;
 
-	public Customer(int customerId, String streetName, int streetNo, int zipcode, int countryId, int phone,
+	public Customer(int customerId, String streetName, int streetNo, ZipCodeCity zipcode, Country countryId, int phone,
 			String email, int customerType) {
 		this.customerId = customerId;
 		this.streetName = streetName;
@@ -46,19 +46,19 @@ public abstract class Customer {
 		this.streetNo = streetNo;
 	}
 
-	public int getZipcode() {
+	public ZipCodeCity getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(int zipcode) {
+	public void setZipcode(ZipCodeCity zipcode) {
 		this.zipcode = zipcode;
 	}
 
-	public int getCountryId() {
+	public Country getCountryId() {
 		return countryId;
 	}
 
-	public void setCountryId(int countryId) {
+	public void setCountryId(Country countryId) {
 		this.countryId = countryId;
 	}
 
