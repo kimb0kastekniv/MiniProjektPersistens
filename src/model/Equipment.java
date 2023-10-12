@@ -3,7 +3,7 @@ package model;
 public class Equipment extends Product {
 
 	private int eqId;
-	private String type;
+	private int type;
 	private String description;
 
 	public Equipment(int productId, String name, double purchasePrice, double salesPrice, int minStock,
@@ -21,11 +21,11 @@ public class Equipment extends Product {
 		this.eqId = eqId;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
