@@ -6,6 +6,13 @@ public class SaleOrderLine {
 	private int quantity;
 	private double salePrice;
 
+	public SaleOrderLine(SaleOrder saleOrderId, Product productId, int quantity, double salePrice) {
+		this.saleOrderId = saleOrderId;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.salePrice = salePrice;
+	}
+
 	// Getters and Setters
 	public SaleOrder getSaleOrderId() {
 		return saleOrderId;
