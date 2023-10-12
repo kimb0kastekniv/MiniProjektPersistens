@@ -12,8 +12,11 @@ public class SaleOrder {
 	private Customer customer; // Foreign key to Customer table
 
 	private ArrayList<SaleOrderLine> saleOrderLine;
-	private Discount discount;
+	private int discount;
 	private ArrayList<Product> productsInOrder;
+	
+	private static final double businessDiscountRate = 0.10;
+	private static final double privateDiscountAmount = 45;
 
 	public SaleOrder(int saleOrderId, int date, double amount, boolean deliveryStatus, int deliveryDate,
 			Invoice invoice, Customer customer) {
@@ -25,13 +28,10 @@ public class SaleOrder {
 		this.invoice = invoice;
 		this.customer = customer;
 		saleOrderLine = new ArrayList<SaleOrderLine>();
-		discount = new Discount();
-		productsInOrder = new ArrayList<>();
 	}
 
 	public SaleOrder() {
 		saleOrderLine = new ArrayList<>();
-		discount = new Discount();
 	}
 
 	public void createSaleOrderLine(SaleOrder saleOrderId, Product productId, int quantity, double salePrice) {
@@ -40,11 +40,33 @@ public class SaleOrder {
 	}
 
 	public double getAmountWithDiscount(double input) {
-		int customerType = customer.getCustomerType();
-		double saleOrderAmount = input;
-		double amount = discount.getAmountWithDiscount(customerType, saleOrderAmount);
-		return amount;
-	}
+        int customerType = customer.getCustomerType();
+        double saleOrderAmount = input;
+
+        // Apply the discount based on customer type and sale order amount
+        if (customerType == 2) { // Business customer
+            if (saleOrderAmount >= 2500) {
+                saleOrderAmount = applyBusinessDiscount(saleOrderAmount);
+            }
+        } else if (customerType == 1) { // Private customer
+            if (saleOrderAmount >= 1500) {
+                saleOrderAmount = applyPrivateDiscount(saleOrderAmount);
+            }
+        }
+
+        // Apply the flat rate discount
+        saleOrderAmount -= discount;
+
+        return saleOrderAmount;
+    }
+
+    private double applyBusinessDiscount(double amount) {
+        return amount - (amount * businessDiscountRate);
+    }
+
+    private double applyPrivateDiscount(double amount) {
+        return amount - privateDiscountAmount;
+    }
 
 	public ArrayList<SaleOrderLine> getSaleOrderLines() {
 		return saleOrderLine;
@@ -54,24 +76,6 @@ public class SaleOrder {
 		saleOrderLine = saleOrderLines;
 	}
 
-	public void setCustomerToCurrentSaleOrder(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Customer getCustomerFromSaleCurrentOrder() {
-		return customer;
-	}
-
-	public void setProductToCurrentSaleOrder(Product p) {
-		// Assuming you have a collection to store products in the current order
-		if (productsInOrder == null) {
-			productsInOrder = new ArrayList<>();
-		}
-		productsInOrder.add(p);
-	}
-	public ArrayList<Product> getProductsInSaleOrder() {
-        return productsInOrder;
-    }
 
 	
 	
