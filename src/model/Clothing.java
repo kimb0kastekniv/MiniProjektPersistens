@@ -1,16 +1,12 @@
 package model;
 
-public class Clothing extends Product {
+public class Clothing {
 	private int clId;
 	private String size;
 	private String colour;
 
-	public Clothing(int productId, String name, double purchasePrice, double salesPrice, int minStock,
-			Supplier supplierId, Country countryId, int type, int clId, String size, String colour) {
-		// Call the constructor of the superclass (Product) to initialize inherited
-		// fields
-		super(productId, name, purchasePrice, salesPrice, minStock, supplierId, countryId, type);
-		// Initialize the fields specific to Clothing
+	public Clothing(int clId, String size, String colour) {
+		
 		this.clId = clId;
 		this.size = size;
 		this.colour = colour;
