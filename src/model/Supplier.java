@@ -11,8 +11,8 @@ public class Supplier {
 	private int phoneNo;
 	private String email;
 
-	public Supplier(int supplierId, String name, String streetName, int streetNo, ZipCodeCity zipcode, Country countryId,
-			int phoneNo, String email) {
+	public Supplier(int supplierId, String name, String streetName, int streetNo, ZipCodeCity zipcode,
+			Country countryId, int phoneNo, String email) {
 		this.supplierId = supplierId;
 		this.name = name;
 		this.streetName = streetName;
