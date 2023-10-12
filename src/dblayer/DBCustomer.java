@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import model.Customer;
 
 public class DBCustomer {
-	private static final String selectAllQ = "SELECT c.*,cc.city,czc.zipCode FROM Customer c, CustomerCity cc,CityZipCode czc WHERE c.adress = cc.adress AND cc.city = czc.city";
-	private static final String findCustomerByIdQ = selectAllQ + " AND customerId = ?";
+	private static final String selectAllQ = "SELECT * FROM Customer ";
+	private static final String findCustomerByIdQ = selectAllQ + " AND customer_Id = ?";
 	
 	private PreparedStatement selectAll;
 	private PreparedStatement findCustomerById;
@@ -38,7 +38,7 @@ public class DBCustomer {
 			}
 	}
 
-		private Customer buildCustomerFromRS(ResultSet rs){
+		private Customer buildCustomerFromRS(ResultSet rs) throws SQLException{
 		try {
 			// Needs to be handled, upcoming fix
 		Customer tempCustomer = new Customer(

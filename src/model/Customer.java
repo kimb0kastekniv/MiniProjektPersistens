@@ -4,13 +4,13 @@ public class Customer {
 	private int customerId;
 	private String streetName;
 	private int streetNo;
-	private ZipCodeCity zipcode;
-	private Country countryId;
+	private int zipcode;
+	private int countryId;
 	private int phone;
 	private String email;
 	private int customerType;
 
-	public Customer(int customerId, String streetName, int streetNo, ZipCodeCity zipcode, Country countryId, int phone,
+	public Customer(int customerId, String streetName, int streetNo, int zipcode, int countryId, int phone,
 			String email, int customerType) {
 		this.customerId = customerId;
 		this.streetName = streetName;
@@ -46,19 +46,19 @@ public class Customer {
 		this.streetNo = streetNo;
 	}
 
-	public ZipCodeCity getZipcode() {
+	public int getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(ZipCodeCity zipcode) {
+	public void setZipcode(int zipcode) {
 		this.zipcode = zipcode;
 	}
 
-	public Country getCountryId() {
+	public int getCountryId() {
 		return countryId;
 	}
 
-	public void setCountryId(Country countryId) {
+	public void setCountryId(int countryId) {
 		this.countryId = countryId;
 	}
 
