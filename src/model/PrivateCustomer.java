@@ -1,18 +1,16 @@
 package model;
 
-public class PrivateCustomer extends Customer {
+public class PrivateCustomer  {
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private int pcId;
 
-	public PrivateCustomer(String firstName, String middleName, String lastName, int pcId, int customerId,
-			String streetName, int streetNo, int zipcode, int countryId, int phone, String email, int customerType) {
-		super(customerId, streetName, streetNo, zipcode, countryId, phone, email, customerType);
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.pcId = pcId;
+	public PrivateCustomer(String firstName, String middleName, String lastName, int pcId) {
+	    this.firstName = firstName;
+	    this.middleName = middleName;
+	    this.lastName = lastName;
+	    this.pcId = pcId;
 	}
 
 	public String getFirstName() {
