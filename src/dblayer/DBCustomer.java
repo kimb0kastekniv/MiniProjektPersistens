@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import model.Customer;
 
 public class DBCustomer {
-	private static final String selectAllQ = "SELECT * FROM Customer ";
-	private static final String findCustomerByIdQ = selectAllQ + " AND customer_Id = ?";
+	private static final String selectAllQ = "SELECT customer_Id, streetName, streetNo, zipcode, country_Id, phone, email, customerType FROM Customer";
+	private static final String findCustomerByIdQ = selectAllQ + " WHERE customer_Id = ?";
 	
 	private PreparedStatement selectAll;
 	private PreparedStatement findCustomerById;
@@ -21,6 +21,7 @@ public class DBCustomer {
 	}
 	
 	public Customer findCustomerById(int customerId) throws SQLException {
+		System.out.println("We go here");
 		try {
 			findCustomerById.setInt(1, customerId);
 			ResultSet rs = findCustomerById.executeQuery();
@@ -39,9 +40,10 @@ public class DBCustomer {
 	}
 
 		private Customer buildCustomerFromRS(ResultSet rs) throws SQLException{
-		try {
-			// Needs to be handled, upcoming fix
-		Customer tempCustomer = new Customer(
+			System.out.println("We Go here2");
+			try {
+				// Needs to be handled, upcoming fix
+			Customer tempCustomer = new Customer(
 				rs.getInt("customer_Id"),
 				rs.getString("streetName"),
 				rs.getInt("streetNo"),
@@ -50,12 +52,12 @@ public class DBCustomer {
 				rs.getInt("phone"),
 				rs.getString("email"),
 				rs.getInt("customerType")
-				);
-		return tempCustomer;
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			throw e;
+					);
+			return tempCustomer;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				throw e;
 		}
 	}
 }

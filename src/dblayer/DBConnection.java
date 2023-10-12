@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import dblayer.*;
+import model.*;
+
 public class DBConnection { //private
 	private Connection connection = null;
 	private static DBConnection dbConnection;
@@ -76,6 +79,5 @@ public class DBConnection { //private
 	public static void main(String[] args) {
 		DBConnection dbCon = DBConnection.getInstance();
 		Connection connection = dbCon.getConnection();
-
 	}
 }
