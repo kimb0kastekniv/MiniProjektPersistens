@@ -2,8 +2,9 @@ package controller;
 
 import java.sql.SQLException;
 
-import db.ProductDB;
-import db.ProductDBIF;
+
+import dblayer.DBProduct;
+import dblayer.DBProductIF;
 import model.Product;
 
 public class ProductCtr {
@@ -11,7 +12,7 @@ public class ProductCtr {
 	private DBProductIF dBproductIF;
 	
 	public ProductCtr() throws SQLException {
-		dBproductIF = new ProductDB();
+		dBproductIF = new DBProduct();
 	}
 	
 	public Product findProductByBarcode(int barcode) throws SQLException {
