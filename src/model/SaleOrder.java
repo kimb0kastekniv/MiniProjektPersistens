@@ -8,8 +8,8 @@ public class SaleOrder {
 	private double amount;
 	private boolean deliveryStatus;
 	private int deliveryDate;
-	private Invoice invoice; // Foreign key to Invoice table
-	private Customer customer; // Foreign key to Customer table
+	private int invoice; // Foreign key to Invoice table
+	private int customer; // Foreign key to Customer table
 
 	private ArrayList<SaleOrderLine> saleOrderLine;
 	private int discount;
@@ -19,7 +19,7 @@ public class SaleOrder {
 	private static final double privateDiscountAmount = 45;
 
 	public SaleOrder(int saleOrderId, int date, double amount, boolean deliveryStatus, int deliveryDate,
-			Invoice invoice, Customer customer) {
+			int invoice, int customer) {
 		this.saleOrderId = saleOrderId;
 		this.date = date;
 		this.amount = amount;
