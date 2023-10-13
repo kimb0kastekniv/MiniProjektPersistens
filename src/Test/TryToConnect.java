@@ -24,7 +24,7 @@ class TryToConnect {
 
     @AfterAll
     static void tearDownAfterClass() throws Exception {
-        dbConnection.disconnect();
+        
     }
 
     @Test

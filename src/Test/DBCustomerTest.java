@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dblayer.*;
@@ -14,14 +14,14 @@ class DBCustomerTest {
 
 	static DBConnection con = null;
 
-	@Before
+	@BeforeEach
 	void setUp() throws Exception {
 		con = DBConnection.getInstance();
 	}
 
-	@After
+	@AfterEach
 	void tearDown() throws Exception {
-		con.disconnect();
+		
 	}
 
 	@Test

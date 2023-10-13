@@ -34,10 +34,14 @@ public class DBProduct implements DBProductIF {
 			if (rs.next()) {
 				p = buildProduct(rs);
 			}
+			else {
+				throw new SQLException();
+			}
 			return p;
+
 		} catch (SQLException e) {
-			e.printStackTrace();
-          return null;
+			e.getStackTrace();
+			throw new SQLException();
 		}
 	}
 

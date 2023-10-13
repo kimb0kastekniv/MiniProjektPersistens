@@ -37,6 +37,7 @@ public class DBCustomer implements DBCustomerIF {
 			return customer;
 		}
 		catch (SQLException e){
+			e.getStackTrace();
 			throw new SQLException();
 			}
 	}
