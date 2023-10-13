@@ -31,16 +31,18 @@ public class DBCustomer implements DBCustomerIF {
 			if(rs.next()) {
 				customer = buildCustomerFromRS(rs);
 			}
+			else {
+				throw new SQLException();
+			}
 			return customer;
 		}
 		catch (SQLException e){
-			throw e;
+			throw new SQLException();
 			}
 	}
 
 		private Customer buildCustomerFromRS(ResultSet rs) throws SQLException{
 			try {
-				// Needs to be handled, upcoming fix
 			Customer tempCustomer = new Customer(
 				rs.getInt("customer_Id"),
 				rs.getString("streetName"),
