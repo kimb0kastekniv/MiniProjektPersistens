@@ -1,15 +1,16 @@
 package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class SaleOrder {
 	private int saleOrderId;
-	private int date;
-	private double amount;
+	private Date date;
+	private int amount;
 	private boolean deliveryStatus;
-	private int deliveryDate;
-	private int invoice; // Foreign key to Invoice table
-	private int customer; // Foreign key to Customer table
+	private Date deliveryDate;
+	private int invoiceId; // Foreign key to Invoice table
+	private int customerId; // Foreign key to Customer table
 
 	private ArrayList<SaleOrderLine> saleOrderLine;
 	private int discount;
@@ -18,15 +19,15 @@ public class SaleOrder {
 	private static final double businessDiscountRate = 0.10;
 	private static final double privateDiscountAmount = 45;
 
-	public SaleOrder(int saleOrderId, int date, double amount, boolean deliveryStatus, int deliveryDate,
-			int invoice, int customer) {
+	public SaleOrder(int saleOrderId, Date date, int amount, boolean deliveryStatus, Date deliveryDate,
+			int invoiceId, int customerId) {
 		this.saleOrderId = saleOrderId;
 		this.date = date;
 		this.amount = amount;
 		this.deliveryStatus = deliveryStatus;
 		this.deliveryDate = deliveryDate;
-		this.invoice = invoice;
-		this.customer = customer;
+		this.invoiceId = invoiceId;
+		this.customerId = customerId;
 		saleOrderLine = new ArrayList<SaleOrderLine>();
 	}
 
@@ -38,18 +39,18 @@ public class SaleOrder {
 		SaleOrderLine sol = new SaleOrderLine(this, productId, quantity, salePrice);
 		saleOrderLine.add(sol);
 	}
-
+	/*
 	public double getAmountWithDiscount(double input) {
 		int customerType = customer.getCustomerType();
 		double saleOrderAmount = input;
 
 		// Apply the discount based on customer type and sale order amount
 		if (customerType == 2) { // Business customer
-			if (saleOrderAmount >= 2500) {
+			if (saleOrderAmount >= 1500) {
 				saleOrderAmount = applyBusinessDiscount(saleOrderAmount);
 			}
 		} else if (customerType == 1) { // Private customer
-			if (saleOrderAmount >= 1500) {
+			if (saleOrderAmount >= 2500) {
 				saleOrderAmount = applyPrivateDiscount(saleOrderAmount);
 			}
 		}
@@ -59,6 +60,7 @@ public class SaleOrder {
 
 		return saleOrderAmount;
 	}
+	*/
 
 	private double applyBusinessDiscount(double amount) {
 		return amount - (amount * businessDiscountRate);
@@ -76,13 +78,12 @@ public class SaleOrder {
 		saleOrderLine = saleOrderLines;
 	}
 	
-	public void setCustomerToCurrentSaleOrder(Customer customer) {
-		this.customer = customer;
+	public void setCustomerToCurrentSaleOrder(int customer) {
+		this.customerId = customerId;
 	}
-	public Customer getCustomerFromCurrentSaleOrder() {
-		return customer;
+	public int getCustomerFromCurrentSaleOrder() {
+		return customerId;
 	}
-
 
 	public void setProductToCurrentSaleOrder(Product product) {
 		
@@ -97,11 +98,11 @@ public class SaleOrder {
 		this.saleOrderId = saleOrderId;
 	}
 
-	public int getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -109,7 +110,7 @@ public class SaleOrder {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
@@ -121,27 +122,27 @@ public class SaleOrder {
 		this.deliveryStatus = deliveryStatus;
 	}
 
-	public int getDeliveryDate() {
+	public Date getDeliveryDate() {
 		return deliveryDate;
 	}
 
-	public void setDeliveryDate(int deliveryDate) {
+	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public Invoice getInvoiceId() {
-		return invoice;
+	public int getInvoiceId() {
+		return invoiceId;
 	}
 
-	public void setInvoiceId(Invoice invoice) {
-		this.invoice = invoice;
+	public void setInvoiceId(int invoiceId) {
+		this.invoiceId = invoiceId;
 	}
 
-	public Customer getCustomerId() {
-		return customer;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerId(Customer customer) {
-		this.customer = customer;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 }

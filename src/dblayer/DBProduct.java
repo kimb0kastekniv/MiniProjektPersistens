@@ -45,7 +45,7 @@ public class DBProduct implements DBProductIF {
 		}
 	}
 
-	public Product buildProduct(ResultSet rs) throws SQLException {
+	private Product buildProduct(ResultSet rs) throws SQLException {
 		return new Product(
 				rs.getString("name"), 
 				rs.getDouble("purchasePrice"), 
