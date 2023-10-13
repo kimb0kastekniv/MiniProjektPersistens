@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import dblayer.*;
+import model.*;
+
 public class DBConnection { //private
 	private Connection connection = null;
 	private static DBConnection dbConnection;
@@ -76,6 +79,26 @@ public class DBConnection { //private
 	public static void main(String[] args) {
 		DBConnection dbCon = DBConnection.getInstance();
 		Connection connection = dbCon.getConnection();
+		
+		try {
+			DBProduct dbProduct = new DBProduct();
+			
+            int barcodeToFind = 1; // 
 
-	}
+            Product product = dbProduct.findProductByBarcode(barcodeToFind);
+
+            if (product != null) {
+                System.out.println("Product found:");
+                System.out.println("Name: " + product.getName());
+                System.out.println("Purchase Price: " + product.getPurchasePrice());
+                System.out.println("Sales Price: " + product.getSalesPrice());
+            } else {
+                System.out.println("Product not found.");
+            }
+            
+            dbCon.disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

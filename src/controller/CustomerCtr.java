@@ -11,7 +11,8 @@ public class CustomerCtr {
 	private DBCustomerIF dBCustomerIF;
 	
 	public CustomerCtr() throws SQLException{
-		dBCustomerIF = new DBCustomer();
+        //dBCustomer = new DBCustomer();
+        
 	}
 	public Customer findCustomerById(int id) throws SQLException {
 		return dBCustomerIF.findCustomerById(id);

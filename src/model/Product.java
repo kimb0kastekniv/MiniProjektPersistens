@@ -1,22 +1,24 @@
 package model;
 
-public abstract class Product {
-	private int productId;
+public class Product {
+	
 	private String name;
 	private double purchasePrice;
 	private double salesPrice;
 	private int minStock;
-	private Supplier supplierId;
-	private Country countryId; // Foreign key to Country table
+	private int productId;
+	private int supplierId;
+	private int countryId; // Foreign key to Country table
 	private int type;
 
-	public Product(int productId, String name, double purchasePrice, double salesPrice, int minStock,
-			Supplier supplierId, Country countryId, int type) {
-		this.productId = productId;
+	public Product(String name, double purchasePrice, double salesPrice, int minStock, int productId,
+			int supplierId, int countryId, int type) {
+		
 		this.name = name;
 		this.purchasePrice = purchasePrice;
 		this.salesPrice = salesPrice;
 		this.minStock = minStock;
+		this.productId = productId;
 		this.supplierId = supplierId;
 		this.countryId = countryId;
 		this.type = type;
@@ -63,19 +65,19 @@ public abstract class Product {
 		this.minStock = minStock;
 	}
 
-	public Supplier getSupplierId() {
+	public int getSupplierId() {
 		return supplierId;
 	}
 
-	public void setSupplierId(Supplier supplierId) {
+	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;
 	}
 
-	public Country getCountryId() {
+	public int getCountryId() {
 		return countryId;
 	}
 
-	public void setCountryId(Country countryId) {
+	public void setCountryId(int countryId) {
 		this.countryId = countryId;
 	}
 

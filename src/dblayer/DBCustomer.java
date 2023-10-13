@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import model.Customer;
 
-public class DBCustomer {
-	private static final String selectAllQ = "SELECT * FROM Customer ";
-	private static final String findCustomerByIdQ = selectAllQ + " AND customer_Id = ?";
+public class DBCustomer implements DBCustomerIF {
+	private static final String selectAllQ = "SELECT * FROM Customer";
+	private static final String findCustomerByIdQ = selectAllQ + " WHERE customer_Id = ?";
 	
 	private PreparedStatement selectAll;
 	private PreparedStatement findCustomerById;
@@ -39,9 +39,9 @@ public class DBCustomer {
 	}
 
 		private Customer buildCustomerFromRS(ResultSet rs) throws SQLException{
-		try {
-			// Needs to be handled, upcoming fix
-		Customer tempCustomer = new Customer(
+			try {
+				// Needs to be handled, upcoming fix
+			Customer tempCustomer = new Customer(
 				rs.getInt("customer_Id"),
 				rs.getString("streetName"),
 				rs.getInt("streetNo"),
@@ -50,12 +50,12 @@ public class DBCustomer {
 				rs.getInt("phone"),
 				rs.getString("email"),
 				rs.getInt("customerType")
-				);
-		return tempCustomer;
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			throw e;
+					);
+			return tempCustomer;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				throw e;
 		}
 	}
 }
