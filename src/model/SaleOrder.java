@@ -14,7 +14,7 @@ public class SaleOrder {
 	private ArrayList<SaleOrderLine> saleOrderLine;
 	private int discount;
 	private ArrayList<Product> productsInOrder;
-	
+
 	private static final double businessDiscountRate = 0.10;
 	private static final double privateDiscountAmount = 45;
 
@@ -40,33 +40,33 @@ public class SaleOrder {
 	}
 
 	public double getAmountWithDiscount(double input) {
-        int customerType = customer.getCustomerType();
-        double saleOrderAmount = input;
+		int customerType = customer.getCustomerType();
+		double saleOrderAmount = input;
 
-        // Apply the discount based on customer type and sale order amount
-        if (customerType == 2) { // Business customer
-            if (saleOrderAmount >= 2500) {
-                saleOrderAmount = applyBusinessDiscount(saleOrderAmount);
-            }
-        } else if (customerType == 1) { // Private customer
-            if (saleOrderAmount >= 1500) {
-                saleOrderAmount = applyPrivateDiscount(saleOrderAmount);
-            }
-        }
+		// Apply the discount based on customer type and sale order amount
+		if (customerType == 2) { // Business customer
+			if (saleOrderAmount >= 2500) {
+				saleOrderAmount = applyBusinessDiscount(saleOrderAmount);
+			}
+		} else if (customerType == 1) { // Private customer
+			if (saleOrderAmount >= 1500) {
+				saleOrderAmount = applyPrivateDiscount(saleOrderAmount);
+			}
+		}
 
-        // Apply the flat rate discount
-        saleOrderAmount -= discount;
+		// Apply the flat rate discount
+		saleOrderAmount -= discount;
 
-        return saleOrderAmount;
-    }
+		return saleOrderAmount;
+	}
 
-    private double applyBusinessDiscount(double amount) {
-        return amount - (amount * businessDiscountRate);
-    }
+	private double applyBusinessDiscount(double amount) {
+		return amount - (amount * businessDiscountRate);
+	}
 
-    private double applyPrivateDiscount(double amount) {
-        return amount - privateDiscountAmount;
-    }
+	private double applyPrivateDiscount(double amount) {
+		return amount - privateDiscountAmount;
+	}
 
 	public ArrayList<SaleOrderLine> getSaleOrderLines() {
 		return saleOrderLine;
@@ -75,12 +75,19 @@ public class SaleOrder {
 	public void setSaleOrderLines(ArrayList<SaleOrderLine> saleOrderLines) {
 		saleOrderLine = saleOrderLines;
 	}
+	
+	public void setCustomerToCurrentSaleOrder(Customer customer) {
+		this.customer = customer;
+	}
+	public Customer getCustomerFromCurrentSaleOrder() {
+		return customer;
+	}
 
 
-	
-	
-	
-	
+	public void setProductToCurrentSaleOrder(Product product) {
+		
+	}
+
 	// Getters and Setters
 	public int getSaleOrder() {
 		return saleOrderId;
